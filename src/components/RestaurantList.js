@@ -5,6 +5,11 @@ import RestaurantDetail from "./RestaurantsDetail";
 
 // navigation prop is passed in via the withNavigation function
 const RestaurantList = ({ title, restaurants, navigation }) => {
+  // don't render anything if there are no restaurants
+  if (!restaurants.length) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
