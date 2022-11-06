@@ -2,10 +2,17 @@ import React, { useState } from "react";
 import { Text, StyleSheet, View } from "react-native";
 import SearchBar from "../components/SearchBar";
 import useRestaurants from "../hooks/useRestaurants";
+import RestaurantList from "../components/RestaurantList";
 
 const SearchScreen = () => {
   const [term, setTerm] = useState("");
   const [searchApi, restaurants, errorMessage] = useRestaurants();
+
+  const filterRestaurantsByPrice = price => {
+    return restaurants.filter(restaurant => {
+      return restaurant.price === price;
+    });
+  };
 
   return (
     <View>
@@ -19,7 +26,10 @@ const SearchScreen = () => {
       :
         null
       }
-      <Text>We have found {restaurants.length} restaurants that match your search</Text>
+      <RestaurantList title="Super Cheap" restaurants={filterRestaurantsByPrice("$")} />
+      <RestaurantList title="Kinda Cheap" restaurants={filterRestaurantsByPrice("$$")} />
+      <RestaurantList title="Bit Pricey" restaurants={filterRestaurantsByPrice("$$$")} />
+      <RestaurantList title="Pricey As" restaurants={filterRestaurantsByPrice("$$$$")} />
     </View>
   );
 }

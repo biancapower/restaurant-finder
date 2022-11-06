@@ -9,7 +9,7 @@ export default () => {
     try {
       const response = await yelp.get("/search", {
         params: {
-          limit: 5,
+          limit: 20,
           term: searchTerm,
           location: "Sydney"
         }
@@ -26,7 +26,7 @@ export default () => {
   // The second argument is an array of dependencies
   // If the array is empty, the callback will only be called once
   useEffect(() => {
-    searchApi("keto");
+    searchApi("pizza");
   }, []);
 
   return [searchApi, restaurants, errorMessage];
