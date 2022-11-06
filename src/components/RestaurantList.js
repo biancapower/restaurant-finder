@@ -1,7 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import { withNavigation } from "react-navigation";
 import RestaurantDetail from "./RestaurantsDetail";
 
+// navigation prop is passed in via the withNavigation function
 const RestaurantList = ({ title, restaurants, navigation }) => {
   return (
     <View style={styles.container}>
@@ -38,4 +40,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default RestaurantList;
+// withNavigation passes down the navigation prop to the component
+// without having to pass it down through the parent component
+// (useful when parent doesn't need the navigation prop)
+export default withNavigation(RestaurantList);
