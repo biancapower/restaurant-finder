@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
+import RestaurantDetail from "./RestaurantsDetail";
 
 const RestaurantList = ({ title, restaurants }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       <FlatList
         /* FlatList is react native's alternative to map */
@@ -12,7 +13,7 @@ const RestaurantList = ({ title, restaurants }) => {
         data={restaurants}
         keyExtractor={restaurant => restaurant.id}
         renderItem={({ item }) => {
-          return <Text>{item.name}</Text>;
+          return <RestaurantDetail restaurant={item} />;
         }}
       />
     </View>
@@ -20,7 +21,12 @@ const RestaurantList = ({ title, restaurants }) => {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    marginBottom: 15
+  },
   title: {
+    marginLeft: 15,
+    marginBottom: 5,
     fontSize: 18,
     fontWeight: "bold"
   }
