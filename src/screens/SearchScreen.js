@@ -15,7 +15,13 @@ const SearchScreen = () => {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <>
+      {/***************************************************************
+          <></> is a shorthand for <React.Fragment></React.Fragment>
+          acts as an alternative to <View style={{flex: 1}}></View>
+          ensures that the content fills the entire screen
+          and no content is hidden off the screen
+      *****************************************************************/}
       <SearchBar
         term={term}
         onTermChange={(newTerm) => setTerm(newTerm)} // == onTermChange={setTerm}
@@ -32,7 +38,7 @@ const SearchScreen = () => {
         <RestaurantList title="Bit Pricey" restaurants={filterRestaurantsByPrice("$$$")} />
         <RestaurantList title="Pricey As" restaurants={filterRestaurantsByPrice("$$$$")} />
       </ScrollView>
-    </View>
+    </>
   );
 }
 
