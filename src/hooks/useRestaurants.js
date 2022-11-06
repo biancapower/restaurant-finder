@@ -26,7 +26,7 @@ export default () => {
   // The second argument is an array of dependencies
   // If the array is empty, the callback will only be called once
   useEffect(() => {
-    searchApi("pizza");
+    searchApi("food");
   }, []);
 
   return [searchApi, restaurants, errorMessage];
